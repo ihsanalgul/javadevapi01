@@ -17,13 +17,14 @@ public class GetRequest06 extends TestBaseHerOkuApp{
 	  		Among the data there should be someone whose first name is "Susan" and last name is "Brown"
      */
 	
-	@Test
+	@Test //Imported from JUNIT
 	public void get01() {
 		
 		//Set the url
-		spec.pathParam("bookingName", "booking")
-			.queryParams("firstname","Susan",
-						"lastname","Brown");
+		spec.pathParams("bookingName", "booking")
+						.queryParams("firstname", "Sally",
+										"lastname", "Brown");
+			
 		
 		//Set the expected data
 		

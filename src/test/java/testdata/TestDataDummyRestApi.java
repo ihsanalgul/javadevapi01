@@ -13,7 +13,7 @@ public class TestDataDummyRestApi {
 		expectedData.put("statusCode", 200);
 		expectedData.put("fifthEmployee", "Airi Satou");
 		expectedData.put("numOfEmployee", 24);
-		expectedData.put("secondSalary", "170750");
+		expectedData.put("secondSalary", "106450");
 		
 		List<String> ageList = new ArrayList<>();
 		ageList.add("40");
@@ -31,7 +31,7 @@ public class TestDataDummyRestApi {
 		
 		expectedData.put("eleventhEmployee", innerMap);
 		
-		System.out.println(expectedData);
+//		System.out.println(expectedData);
 		return expectedData;
 	}
 }

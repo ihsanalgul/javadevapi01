@@ -22,7 +22,7 @@ public class GetRequest11 extends TestBaseDummyRestApi {
 	 		Status code is 200
 	 		And 5th employee name is Airi Satou
 	 		And the number of employees is 24
-	 		And the salary of 2nd last employee is 170750
+	 		And the salary of 2nd last employee is 106450
 	 		And 40, 21, and 19 are among the ages
 	 		And 11th employee is like {
 							            "id": "11",
@@ -46,6 +46,7 @@ public class GetRequest11 extends TestBaseDummyRestApi {
 		
 		//Send the request
 		Response response = given().spec(spec).when().get("/{api}/{version}/{employees}");
+		response.prettyPrint();
 		
 		//Assertion
 		HashMap<String, Object> actualData = response.as(HashMap.class);

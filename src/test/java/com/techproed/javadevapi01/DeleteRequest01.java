@@ -47,6 +47,5 @@ public class DeleteRequest01 extends TestBaseDummyRestApi {
 		assertEquals(expectedData.get("status"), actualData.get("status"));
 		assertEquals(expectedData.get("data"), actualData.get("data"));
 		assertEquals(expectedData.get("message"), actualData.get("message"));
-
 	}
 }

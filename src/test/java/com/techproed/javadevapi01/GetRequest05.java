@@ -41,9 +41,11 @@ public class GetRequest05 extends TestBaseJsonPlaceHolder{
 		.assertThat()
 		.statusCode(200)
 		.header("Server", "cloudflare")
-		.contentType(ContentType.JSON).body("userId", Matchers.equalTo(7),
-											"title", Matchers.equalTo("esse et quis iste est earum aut impedit"),
-											"completed", Matchers.equalTo(false));	
+		.contentType(ContentType.JSON)
+		.body("userId", Matchers.equalTo(7), //Do not use response.body for expected data, it is not meaningful
+				"title", Matchers.equalTo("esse et quis iste est earum aut impedit"),
+				"completed", Matchers.equalTo(false)
+				);	
 		
 	}
 	

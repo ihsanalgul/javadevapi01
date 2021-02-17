@@ -46,7 +46,7 @@ public class GetRequest03 {
 //				body("completed", equalTo(false)).
 //				body("userId", equalTo(2));
 			
-			//2.Way:
+			//2.Way: Specific assertion recommended
 //			response.
 //			then().
 //			assertThat().
@@ -56,7 +56,7 @@ public class GetRequest03 {
 //				 "completed", equalTo(false),
 //				 "userId", equalTo(2));
 			
-			//3.Way:
+			//3.Way: General assertion not recommended
 			assertEquals(200, response.getStatusCode());
 			assertEquals("application/json; charset=utf-8", response.getContentType());
 			

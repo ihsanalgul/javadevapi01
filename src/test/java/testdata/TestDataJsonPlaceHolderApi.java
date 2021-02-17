@@ -4,8 +4,10 @@ import java.util.HashMap;
 
 public class TestDataJsonPlaceHolderApi {
 
-	public HashMap<String, Object> setUp() {
-		HashMap<String, Object> expectedData = new HashMap<>();
+	HashMap<String, Object> expectedData = new HashMap<>();
+	
+	public HashMap<String, Object> setUpData() {
+		
 		expectedData.put("statusCode", 200);
 		expectedData.put("completed", false);
 		expectedData.put("userId", 1);

@@ -49,7 +49,6 @@ public class GetRequest01 {
 		System.out.println(response.getStatusLine());
 		System.out.println(response.getHeaders());
 		System.out.println(response.getHeader("Date"));
-
 	}
 
 }

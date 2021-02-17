@@ -54,9 +54,10 @@ public class GetRequest07 extends TestBaseHerOkuApp{
 //						"bookingdates.checkout", equalTo("2020-12-02")
 //						);
 				
-				//2.Way: Use "JsonPath" Class
+				//2.Way: Use "JsonPath" Class is good to navigate and to assert for json Data
+				// In restassured library
 				JsonPath json = response.jsonPath();
-				
+//				assertEquals(200, response.getStatusCode());
 //				assertEquals("Mark", json.get("firstname"));
 //				assertEquals("Smith", json.get("lastname"));
 //				assertEquals(355, json.getInt("totalprice"));
@@ -66,10 +67,11 @@ public class GetRequest07 extends TestBaseHerOkuApp{
 				
 				
 				//3.Way: JsonPath + SoftAssert
-					//1.Step
+					//1.Step Create a SoftAssert object
+					//SoftAssert is from TestNG library
 				SoftAssert softAssert = new SoftAssert();
 				
-				//2.Step
+					//2.Step Use one of the methods i.e. assertTrue, assertFalse, assertEquals
 				softAssert.assertEquals(json.get("firstname"), "Sally");
 				softAssert.assertEquals(json.get("lastname"), "Jones");
 				softAssert.assertEquals(json.getInt("totalprice"), 289);
@@ -77,24 +79,10 @@ public class GetRequest07 extends TestBaseHerOkuApp{
 				softAssert.assertEquals(json.getString("bookingdates.checkin"), "2017-01-26");
 				softAssert.assertEquals(json.getString("bookingdates.checkout"), "2017-07-28");
 				
-				
-				
+		
 					//3.Step
 				softAssert.assertAll();
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+
 				
 				
 	}

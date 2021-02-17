@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -27,32 +28,43 @@ public class GetRequest08 extends TestBaseDummyRestApi{
 	public void get01() {
 		//Set the URL
 		spec.pathParams("apiName", "api",
-						"Version", "v1",
-						"Employees", "employees");
+						"version", "v1",
+						"employees", "employees");
 		
 		//Set the expected data
 		
 		//Send the request
-		Response response = given().spec(spec).when().get("/{apiName}/{Version}/{Employees}");
+		Response response = given().spec(spec).when().get("/{apiName}/{version}/{employees}");
 		
 		response.prettyPrint();
 				
 		JsonPath json = response.jsonPath();
 		
 		assertEquals(200, response.getStatusCode());
+		
+		//The name of the 3rd employee is "Ashton Cox"
 		assertEquals("Ashton Cox", json.getString("data[2].employee_name"));
+		
+		//The salary of 6th employee is 372000
 		assertEquals("372000", json.getString("data[5].employee_salary"));
+		
+		//The age of last employee
 		assertEquals("23", json.getString("data[-1].employee_age")); //last element
+		
+		//The age of second last employee
 		assertEquals("21", json.getString("data[-2].employee_age")); //2nd last element
 		
-		List<String> idListGreaterThanTen = json.getList("data.findAll{Integer.valueOf(it.id)>10}.id");
-		System.out.println(idListGreaterThanTen);
+		//21, 23, 61 are among the ages
+		//json.getList("data.employee_age") collects all values into a list
+//		System.out.println(json.getList("data.employee_age"));
 		
-		assertEquals(14,idListGreaterThanTen.size());
+		List<String> ageList = new ArrayList<String>();
+		ageList.add("21");
+		ageList.add("23");
+		ageList.add("61");
 		
-		List<String> idListLessThan30 = json.getList("data.findAll{Integer.valueOf(it.employee_age)<30}.employee_age");
-		
-		
+		assertTrue(json.getList("data.employee_age").containsAll(ageList));
+
 	}
 
 }

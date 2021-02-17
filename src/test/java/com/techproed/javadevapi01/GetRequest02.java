@@ -24,7 +24,7 @@ public class GetRequest02 {
 	  And 
 	     Response body contains "Not Found"
 	  And 
-	     Response body does not contain "TechProEd" 
+	     Response body does not contain "TechProEd"
 	 */
 	
 	@Test
@@ -40,7 +40,7 @@ public class GetRequest02 {
 		response.prettyPrint();
 		
 		//4.Step: Make assertion
-		//Java stops execution in first failure. This is "Hard Assertion"
+		//Java stops execution in first failure. This is "Hard Assertion"(Also called as "assertion")
 		response.then().assertThat().statusCode(404).statusLine("HTTP/1.1 404 Not Found");
 		
 //		assertTrue(response.asString().contains("Not Found"));
@@ -54,7 +54,7 @@ public class GetRequest02 {
 		    SoftAssert softAssert = new SoftAssert();
 		    
 		
-		    //b)Use assertion with SoftAssert object
+		    //b)Use assertion with SoftAssert(Also called as "verification") object
 		    System.out.println("===========>");
 		    softAssert.assertTrue(response.asString().contains("Not Found"));
 		    System.out.println("===========>");
