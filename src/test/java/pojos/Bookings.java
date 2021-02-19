@@ -12,7 +12,6 @@ public class Bookings {
 	}
 
 	public Bookings(String firstname, String lastname, Integer totalprice, Boolean depositpaid, Bookingdates bookingdates) {
-
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.totalprice = totalprice;

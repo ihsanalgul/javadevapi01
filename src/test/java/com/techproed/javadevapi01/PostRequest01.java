@@ -6,6 +6,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import io.restassured.http.ContentType;
+import io.restassured.internal.print.RequestPrinter;
 import io.restassured.response.Response;
 import pojos.Data;
 import pojos.Employees;
@@ -41,11 +42,11 @@ public class PostRequest01  extends TestBaseDummyRestApi{
 											 }	*/
 	 @Test
 	 public void post01() {
-		 //1.step-> Set the URL
-		 spec.pathParams("api","api",
-				 "version","v1","create","create");
+		 ////////////////////////1.step-> Set the URL
+		 spec.pathParams("api","api", "version","v1","create","create");
 		 
-		 //2.step-> Set the posted data
+		 ////////////////////////2.step-> Set the posted data
+		 
 		 //1st Way: Use constructor without parameter
 //		 Data postedData = new Data();
 //		 postedData.setEmployeeAge(22);
@@ -53,13 +54,14 @@ public class PostRequest01  extends TestBaseDummyRestApi{
 //		 postedData.setEmployeeSalary(33333);
 //		 postedData.setProfileImage("");
 		 
-		//2nd Way: Use constructor without parameter
-		 Data postedData = new Data(0,"Erkan Dormen",3333,22,"");
+		//2nd Way: Use constructor with parameter
+		 Data postedData = new Data(0,"Erkan Dormen",3333,22, "");
+		 //RestAssured convert and send the pojo as is so you need convert manually sometimes
 		 if(postedData.getProfileImage().equals("")) {
 			 postedData.setProfileImage(null);
 		 }
 		 
-		 //3.rd Way: Use Map
+		 //3.rd Way: Use Map (Hard Coding)
 //		 HashMap<String, Object> postedData = new HashMap<String, Object>();
 //		 postedData.put("id", 0);
 //		 postedData.put("employee_name", "Erkan Dormen");
@@ -69,19 +71,20 @@ public class PostRequest01  extends TestBaseDummyRestApi{
 		 
 		 
 		 //Send POST Request
-		 //
 		 Response response = 
 				given()
 				 .contentType(ContentType.JSON)
-				 .spec(spec).auth().basic("admin", "password123")
-				 .body(postedData)
+				 .spec(spec)
+				 .auth().basic("admin", "password123")
+				 .body(postedData)//Rest Assured Library uses serialization here !!!
 				.when()
 				 .post("/{api}/{version}/{create}");
-		 response.prettyPrint();
+		 //response.prettyPrint();
+	
 		 
 		 //Assert
 		 Employees actualData = response.as(Employees.class);
-		 System.out.println(actualData);//by the help of toString()
+		 System.out.println("actualData = "+actualData);//by the help of toString()
 		 
 		 assertEquals(postedData.getEmployeeName(), actualData.getData().getEmployeeName());
 		 assertEquals(postedData.getEmployeeSalary(), actualData.getData().getEmployeeSalary());

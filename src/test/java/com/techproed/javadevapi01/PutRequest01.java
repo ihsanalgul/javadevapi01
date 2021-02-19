@@ -9,8 +9,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import pojos.Todos;
 import testbaseclasses.TestBaseJsonPlaceHolder;
-
-public class PutRequest01 extends TestBaseJsonPlaceHolder{
 	/*
 	 * When
 	 		I send PUT Requst to the Url https://jsonplaceholder.typicode.com/todos/198
@@ -28,7 +26,7 @@ public class PutRequest01 extends TestBaseJsonPlaceHolder{
 									    "id": 198
 									  }
 	 */
-
+public class PutRequest01 extends TestBaseJsonPlaceHolder{
 	/*
 	 * PUT Request is used to update data.
 	 * PUT Request is used for fully update.

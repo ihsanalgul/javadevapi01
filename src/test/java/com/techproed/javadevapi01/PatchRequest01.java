@@ -9,8 +9,6 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import pojos.Todos;
 import testbaseclasses.TestBaseJsonPlaceHolder;
-
-public class PatchRequest01 extends TestBaseJsonPlaceHolder {
 	/*
 	 * When
 	 		I send PATCH Request to the Url https://jsonplaceholder.typicode.com/todos/198
@@ -26,6 +24,8 @@ public class PatchRequest01 extends TestBaseJsonPlaceHolder {
 									    "id": 198
 									  }
 	 */
+public class PatchRequest01 extends TestBaseJsonPlaceHolder {
+
 
 	@Test
 	public void patch01() {
@@ -49,7 +49,7 @@ public class PatchRequest01 extends TestBaseJsonPlaceHolder {
 
 		// Assert
 		Todos actualData = response.as(Todos.class);
-		System.out.println(actualData);
+		System.out.println("Actual Data: \n"+actualData);
 
 		assertEquals(dataToUpdate.getTitle(), actualData.getTitle());
 

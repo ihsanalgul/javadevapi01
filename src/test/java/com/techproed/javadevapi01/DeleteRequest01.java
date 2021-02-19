@@ -8,8 +8,6 @@ import static org.junit.Assert.assertEquals;
 
 import io.restassured.response.Response;
 import testbaseclasses.TestBaseDummyRestApi;
-
-public class DeleteRequest01 extends TestBaseDummyRestApi {
 	/*
 	 	When
 	 		I send DELETE Request to the Url http://dummy.restapiexample.com/api/v1/delete/2	 		
@@ -22,6 +20,8 @@ public class DeleteRequest01 extends TestBaseDummyRestApi {
 								 }	
 	 */
 	
+public class DeleteRequest01 extends TestBaseDummyRestApi {
+
 	@Test
 	public void delete01() {
 		
@@ -42,6 +42,7 @@ public class DeleteRequest01 extends TestBaseDummyRestApi {
 		response.prettyPrint();
 		
 		//Assertion
+		@SuppressWarnings("unchecked")
 		HashMap<String, String> actualData = response.as(HashMap.class);
 		
 		assertEquals(expectedData.get("status"), actualData.get("status"));

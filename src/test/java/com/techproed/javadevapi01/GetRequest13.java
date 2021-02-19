@@ -15,9 +15,16 @@ import static io.restassured.RestAssured.*;
 public class GetRequest13 extends TestBaseHerOkuApp {
 	/*
 	 * When I send GET Request to https://restful-booker.herokuapp.com/booking/1
-	 * Then Response body should be like that; { "firstname": "Eric", "lastname":
-	 * "Smith", "totalprice": 555, "depositpaid": false, "bookingdates": {
-	 * "checkin": "2016-09-09", "checkout": "2017-09-21" } }
+	 * Then Response body should be like that; 
+	 * 											{ "firstname": "Susan", 
+	 * 												"lastname": "Brown", 
+	 * 												"totalprice": 628, 
+	 * 												"depositpaid": false, 
+	 * 												"bookingdates": {
+	 * 												"checkin": "2016-09-09", 
+	 * 												"checkout": "2017-09-21" 
+	 * 												} 
+	 * 											}
 	 */
 
 	@Test
@@ -27,13 +34,15 @@ public class GetRequest13 extends TestBaseHerOkuApp {
 		spec.pathParams("booking", "booking", "id", 1);
 
 		// Set the expected data
-		Bookingdates bookingdates = new Bookingdates("2020-11-22", "2020-12-23");
-		Bookings expectedData = new Bookings("Susan","Brown",628,false,bookingdates);
-		System.out.println(expectedData);
+		Bookingdates bookingdates = new Bookingdates("2017-08-15", "2020-04-17");
+		Bookings expectedData = new Bookings("Sally","Jones",628,true,bookingdates);
+//		System.out.println(expectedData);
 		
+		//Send the request
 		Response response = given().spec(spec).when().get("/{booking}/{id}");
 		response.prettyPrint();
 		
+		//Assertion: GSON + POJO
 		Bookings actualData = response.as(Bookings.class);
 		System.out.println(actualData);
 		
